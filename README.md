@@ -8,6 +8,7 @@ This repository uses the documentation in `docs/` as the source of truth for Fro
 
 - PR 0-1: project guidance and Front Office requirements baseline.
 - PR 1-1: minimal runnable mock app scaffold.
+- Current PR: frontend verification flow for the scaffolded mock platform.
 - Future PRs must stay within the ordered plan in `docs/PLANS.md`.
 
 ## Source of Truth
@@ -24,10 +25,11 @@ The current scaffold includes only:
 
 - Spring Boot API shell with health and mock version endpoints
 - Next.js Front Office anonymous home shell
+- `/verify` page for checking the currently implemented mock baseline through the frontend
 - JUnit smoke tests for backend scaffold endpoints
-- Playwright smoke tests for the home page
+- Playwright smoke tests for the home and verification pages
 
-Login, dashboards, KTRS-FM flows, My Page, domain entities, seed data, report generation, and real integrations are intentionally not implemented yet.
+Login, dashboards, KTRS-FM flows, My Page, domain entities, seed data, report generation, and real integrations are intentionally not implemented yet on `main`.
 
 ## Stack
 
@@ -51,7 +53,15 @@ npm install
 npm run frontend:dev
 ```
 
-The frontend API helper defaults to `http://localhost:8080` for local development. Override with `NEXT_PUBLIC_API_URL` only for non-production-safe local endpoints.
+The frontend API helper defaults to `http://localhost:8080` for local development. Override with `NEXT_PUBLIC_API_BASE_URL` or the older `NEXT_PUBLIC_API_URL` only for non-production-safe local endpoints.
+
+Open the verification dashboard:
+
+```bash
+open http://localhost:3000/verify
+```
+
+`/verify` reads the current backend health and mock version endpoints. H2 domain data is labelled as not exposed until the H2 mock domain baseline lands on the base branch.
 
 ## Checks
 
@@ -71,4 +81,4 @@ H2 is temporary mock persistence and must not be used as production storage. Pro
 
 ## Next Recommended PR
 
-PR 1-2: H2 mock domain baseline.
+PR 2-1: Mock login flow.
