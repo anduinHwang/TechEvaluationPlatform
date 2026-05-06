@@ -6,6 +6,16 @@ The Front Office is the customer-facing area of the Technology Evaluation Integr
 
 Reference service: KIBO K-TOP Open Technology Evaluation Platform.
 
+## PR 1-1 Scaffold Coverage
+
+The PR 1-1 scaffold covers only:
+
+1. Anonymous home shell
+2. Login CTA placeholder
+3. Dark mode placeholder
+4. Front Office service menu placeholders
+5. Backend health/version scaffold endpoints
+
 ## User Types
 
 - Anonymous visitor
