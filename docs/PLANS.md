@@ -10,6 +10,10 @@
 6. PR 3: KTRS-FM vertical slices.
 7. Later phases: common content, TECH-INDEX, Source Technology, Investment Model, BIGx Report, My Page, bulk evaluation, CI hardening, responsive/accessibility passes, and back-office boundary.
 
+## Current PR 1-1 Scope
+
+Spring Boot health/version API scaffold, Next.js anonymous home shell, JUnit tests, and Playwright home smoke tests.
+
 ## Rule
 
 Do not implement future PR items early. Each PR must stay within its declared scope.

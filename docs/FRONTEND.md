@@ -7,7 +7,7 @@ The Front Office app targets Next.js 16+ with TypeScript and App Router. Current
 - Next.js 16+
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
+- shadcn/ui or shadcn-style local primitives in `components/ui`
 - lucide-react
 - Recharts
 - Playwright for UI/E2E tests
@@ -17,11 +17,15 @@ The Front Office app targets Next.js 16+ with TypeScript and App Router. Current
 - Keep business policy out of frontend code unless product specs explicitly define it.
 - Use environment variables for API base URLs; do not hardcode production endpoints.
 - Use shadcn/ui as the UI foundation and lucide-react as the standard icon set.
-- Use Recharts for dashboards and trend information.
+- Use Recharts for dashboards and trend information when those screens are introduced.
 - Support PC, tablet, and mobile layouts.
 - Use stable `data-testid` selectors for Playwright flows.
 - Use `NEXT_PUBLIC_API_URL` or equivalent public runtime configuration for local API base URLs; never hardcode production URLs.
 - Show clear mock/dev error states when the backend is unavailable.
+
+## PR 1-1 Scope
+
+The PR 1-1 home shell does not call the backend yet. Backend health display can be added later if it remains simple and reliable.
 
 ## Placeholder Rules
 

@@ -4,8 +4,15 @@
 
 - Design for a public-facing government/financial service: clear, calm, trustworthy, and scan-friendly.
 - Prefer dense but organized information over marketing-heavy layouts.
-- Make login-required paths obvious and route anonymous users to mock login in early PRs.
+- Make login-required paths obvious when login is introduced in later PRs.
 - Use explicit placeholder language for unconfirmed policy, reports, billing, electronic signature, and external integration behavior.
+
+## PR 1-1 Current Slice
+
+- Anonymous home presents service purpose and login CTA placeholder.
+- Service menu placeholders expose the future Front Office information architecture.
+- Dark mode is represented as a placeholder only.
+- Login, company dashboard, institution dashboard, consent, and service-specific flows are later PRs.
 
 ## Role-Aware Home Principles
 

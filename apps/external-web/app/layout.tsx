@@ -1,11 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Building2 } from 'lucide-react';
+import { Building2, Moon } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Technology Evaluation Integrated Platform',
-  description: 'Mock Front Office vertical slice for technology evaluation services.',
+  description: 'Mock Front Office scaffold for technology evaluation services.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -18,20 +18,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Building2 className="h-5 w-5 text-[var(--primary)]" />
               TTP Front Office
             </Link>
-            <nav className="flex flex-wrap items-center gap-3 text-sm text-[var(--muted-foreground)]">
-              <Link href="/evaluations/ktrs-fm/company">KTRS-FM</Link>
-              <Link href="/notices">Notices</Link>
-              <Link href="/qna">Q&A</Link>
-              <Link href="/mypage">My Page</Link>
-            </nav>
+            <div className="flex items-center gap-2 rounded-md border border-[var(--border)] px-3 py-2 text-sm text-[var(--muted-foreground)]">
+              <Moon className="h-4 w-4" />
+              Dark mode placeholder
+            </div>
           </div>
         </header>
         {children}
-        <footer className="mt-12 border-t border-[var(--border)] bg-white">
-          <div className="mx-auto grid w-full max-w-6xl gap-3 px-4 py-8 text-sm text-[var(--muted-foreground)] md:grid-cols-3">
+        <footer className="border-t border-[var(--border)] bg-white">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-[var(--muted-foreground)] md:flex-row md:items-center md:justify-between">
             <div>KIBO logo placeholder. No click action.</div>
-            <div>33 Munhyeon Geumyung-ro, Nam-gu, Busan</div>
-            <div>1544-1120 weekdays 09:00-18:00 / Night duty 051-606-7301</div>
+            <div>Mock scaffold only. Production footer links are future work.</div>
           </div>
         </footer>
       </body>

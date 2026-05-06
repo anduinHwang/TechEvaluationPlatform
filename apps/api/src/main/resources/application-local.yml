@@ -1,13 +1,14 @@
 spring:
   datasource:
     # H2 is temporary mock persistence and must not be used as production storage.
-    url: jdbc:h2:mem:ttp_test;MODE=PostgreSQL;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:ttp_mock;MODE=PostgreSQL;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
     username: sa
     password:
   h2:
     console:
-      enabled: false
+      enabled: true # Local development only.
+      path: /h2-console
   jpa:
     hibernate:
       ddl-auto: none

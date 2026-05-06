@@ -1,27 +1,27 @@
-# Mock FO Vertical Slice
+# Mock App Scaffold
 
 ## Goal
 
-Provide a minimal coherent mock application that proves the Front Office can support role-aware navigation, KTRS-FM mock application creation, consent submission, My Page visibility, and institution list access.
+Provide the first runnable mock scaffold for the Technology Evaluation Integrated Platform without implementing business flows early.
 
-## Implemented Flow
+## Implemented Scope
 
 - Anonymous visitor opens `/`.
-- Visitor opens `/login`.
-- Visitor uses mock role login as company or institution member.
-- Company member opens `/company`.
-- Company member opens `/evaluations/ktrs-fm/company`.
-- Company member creates a mock application at `/evaluations/ktrs-fm/company/new`.
-- Required information-use consent is submitted as `MOCK_SIGNED`.
-- Company member lands on `/mypage` and sees the submitted application.
-- Institution member opens `/institution`.
-- Institution member opens `/evaluations/ktrs-fm/institution` and sees submitted/transmitted mock applications.
+- Home shows service introduction, login CTA placeholder, dark mode placeholder, and service menu placeholders.
+- Backend exposes `/api/v1/health`.
+- Backend exposes `/api/v1/mock/version`.
+- Playwright verifies the home smoke flow.
+- JUnit verifies the backend scaffold endpoints.
 
 ## Non-goals
 
 - Real OAuth
+- Mock login
 - Certificate login
 - Simple authentication
+- KTRS-FM flow
+- Domain entities
+- Seed data
 - Real scoring
 - Real report generation
 - Billing/payment
