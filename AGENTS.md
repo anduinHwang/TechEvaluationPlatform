@@ -1,34 +1,48 @@
 # AGENTS.md
 
-Behavioral guidelines for coding agents working on the Technology Evaluation Integrated Platform.
+Behavioral and project rules for agents working on the Technology Evaluation Integrated Platform.
 
-## 1. Think Before Coding
+## Think Before Coding
 
-Do not assume policy. State assumptions and ask when the product rule is unclear.
+- Read `AGENTS.md`, `ARCHITECTURE.md`, and relevant `docs/product-specs/*` before implementation.
+- State assumptions when requirements are unclear.
+- If product documents conflict, stop and report the conflict.
+- Do not silently choose between conflicting requirements.
 
-## 2. Simplicity First
+## Simplicity First
 
-Build the smallest coherent vertical slice that satisfies the task. Do not add speculative abstractions, real integrations, or future-only features.
+- Implement the smallest change that satisfies the current PR.
+- Do not implement future PR scope early.
+- Do not add abstractions, integrations, or configurability that the current PR does not require.
 
-## 3. Surgical Changes
+## Surgical Changes
 
-Touch only files required for the current PR. Do not refactor unrelated code.
+- Stay within the current PR's scope.
+- Do not refactor unrelated code.
+- Clean up only artifacts introduced by the current task.
+- Every changed line should trace back to the requested PR.
 
-## 4. Goal-Driven Execution
+## Goal-Driven Execution
 
-Every PR must include validation results. Backend behavior must be covered with JUnit tests. Front Office navigation flows must be covered with Playwright where practical.
+- Every PR must include validation results.
+- Backend behavior must use JUnit tests.
+- Frontend E2E flows must use Playwright when UI behavior changes.
+- If validation cannot run, explain the concrete blocker in the PR body.
 
-## Project Guardrails
+## Product Policy Guardrails
 
-- Login is mock-only until approved OAuth 2.0 details are confirmed.
-- Do not call the KIBO OAuth URL from application code in this mock slice.
-- Do not hardcode secrets, client IDs, client secrets, tokens, certificates, private keys, production callback URLs, or real credentials.
-- Do not invent scoring formulas, grade thresholds, legal rules, paid membership rules, billing rules, certificate login behavior, electronic signature provider behavior, guarantee recommendation logic, or report templates.
+- Login is mock-only until OAuth 2.0 integration details are confirmed.
+- Do not implement real KIBO OAuth.
+- Do not call `https://www.kibo.or.kr/oauth/login/id` from application code.
+- Do not hardcode secrets, OAuth client IDs, client secrets, certificates, tokens, private keys, production callback URLs, or real credentials.
+- Do not invent scoring formulas, grade thresholds, paid/free membership policy, billing policy, refund policy, certificate login behavior, electronic signature provider behavior, guarantee recommendation logic, report templates, legal retention rules, or production integration details.
 - If policy is missing, add or update `docs/product-specs/open-questions.md`.
-- H2 is temporary and must not be treated as production storage.
 
 ## Validation Expectations
 
-- Backend: `cd apps/api && ./gradlew test`
-- Frontend lint/typecheck/build: `npm run frontend:lint`, `npm run frontend:typecheck`, `npm run frontend:build`
-- E2E: `npm run test:e2e`
+Use the lightest validation that matches the PR scope.
+
+- Documentation-only changes: check the documentation tree, run `git diff --check`, and search for conflict markers.
+- Backend behavior changes: run JUnit tests, typically `npm run backend:test` when root scripts are available or the Gradle test command in `apps/api`.
+- Frontend UI changes: run frontend lint/typecheck/build where available and Playwright for affected flows.
+- Do not spend time installing unrelated dependencies for a documentation-only PR unless a configured doc check requires it.

@@ -1,24 +1,22 @@
 # Security
 
-## Mock Authentication
+## Authentication
 
-Authentication is mock-only in this PR. The app must not call the future KIBO OAuth login URL and must not include OAuth client IDs, client secrets, tokens, certificates, private keys, or production callback URLs.
+Login is mock-only for early PRs. Future KIBO OAuth 2.0 integration is planned, but provider configuration is not confirmed.
+
+Do not implement real OAuth, call the OAuth reference URL from application code, or hardcode OAuth client IDs, client secrets, tokens, certificates, private keys, production callback URLs, or real credentials.
 
 ## Sensitive Data Classes
 
 - Personal information
 - Company confidential data
 - Business registration numbers
-- Financial/technical data
+- Financial and technical data
 - Evaluation results
 - Uploaded consent forms
 - Report files
 - Sub-account permissions
 
-## Consent
+## Consent and Audit
 
-Information-use consent is represented as a mock consent record with `MOCK_SIGNED`. Real electronic signature provider behavior and legal retention rules are open questions.
-
-## Audit
-
-The backend records audit events for mock login, application creation, consent submission, application submission, and institution list access.
+Information-use consent, electronic signature, consent history, audit event schema, and legal retention are security-sensitive. Keep them as placeholders until requirements are confirmed.

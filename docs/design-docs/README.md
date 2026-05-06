@@ -1,6 +1,6 @@
 # Design Docs
 
-Approved or proposed technical design decisions belong here.
+Approved and proposed technical design decisions belong here.
 
 ## Template
 

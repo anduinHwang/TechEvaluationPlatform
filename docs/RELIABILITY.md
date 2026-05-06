@@ -1,13 +1,16 @@
 # Reliability
 
-## Mock Data
+## Mock Persistence
 
-H2 seed data gives repeatable local and test behavior. H2 is temporary and not production-safe.
+Early mock PRs may use H2 in-memory storage only. H2 is temporary and not production persistence.
 
-## Bulk and External Integrations
+## Future Reliability Areas
 
-Excel upload, bulk evaluation, file server/electronic document repository, report generation, network boundary delivery, and SMS/Kakao delivery reliability are future placeholders.
+- Excel upload validation and correction guidance.
+- Bulk evaluation job state and retry/idempotency.
+- Report generation and download reliability.
+- File server and electronic document repository integration.
+- Cross-network delivery mechanism.
+- SMS/Kakao notification consent and delivery behavior.
 
-## Idempotency
-
-Future application submission and consent endpoints should define idempotency rules before production use.
+All production reliability policies remain placeholders until confirmed.

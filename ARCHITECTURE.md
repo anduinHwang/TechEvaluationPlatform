@@ -1,32 +1,32 @@
 # Architecture
 
-This repository is a monorepo-style mock implementation for the Technology Evaluation Integrated Platform.
+This repository will evolve into a monorepo-style Technology Evaluation Integrated Platform. PR 0-1 is documentation-only; it defines the target boundaries that implementation PRs must follow.
 
-## Current Structure
+## Target Application Shape
 
 ```text
 apps/
-├── api            # Spring Boot 3.5+ mock API, Java 21, Gradle, H2
+├── api            # Spring Boot 3.5+ backend API, Java 21, Gradle, temporary H2 for mock PRs
 └── external-web   # Next.js 16+ customer-facing Front Office
 
-e2e/               # Playwright Front Office flow tests
-docs/              # Product, design, security, and quality documentation
+e2e/               # Playwright E2E tests
+docs/              # Source-of-truth requirements and design documents
 ```
 
-Back-office web is intentionally not created in this PR. Institution-facing Front Office pages live in `apps/external-web` until Back Office IA is confirmed.
+Do not create `backoffice-web` until Back Office IA is confirmed. Institution-facing Front Office pages remain inside `external-web` during the early mock phase.
 
-## Backend Boundary
+## Target Boundaries
 
-`apps/api` exposes `/api/v1` endpoints for mock authentication, dashboards, KTRS-FM applications, consent, My Page, common notices, and FAQs. H2 is enabled only for local/mock development and tests. It must later be replaced by the confirmed production database.
+- Backend: Spring Boot 3.5+, Java 21, temporary H2 in-memory persistence for mock PRs only.
+- Frontend: Next.js 16+, TypeScript, shadcn/ui, lucide-react, Recharts, responsive PC/tablet/mobile layouts.
+- Authentication: mock-only first, future KIBO OAuth 2.0 placeholder only.
+- Reports/files: placeholders until file server, PDF/report templates, and legal rules are confirmed.
+- Evaluation policy: formulas, thresholds, paid/free behavior, and guarantee rules are product-policy placeholders.
 
-## Frontend Boundary
+## Dependency Direction
 
-`apps/external-web` uses Next.js App Router. It calls the Spring Boot API through `NEXT_PUBLIC_API_URL`, defaulting to `http://localhost:8080` for local development. It must not hardcode production URLs.
+Future code should keep frontend, backend API, domain policy, persistence, and external integration boundaries explicit. Application code must not embed unknown product policy or production integration details.
 
-## Authentication Boundary
+## Current Implementation Boundary
 
-Current login is mock-only. Future KIBO OAuth 2.0 integration is a placeholder and must be implemented only after provider configuration, callback URLs, token handling, and security requirements are approved.
-
-## Evaluation Boundary
-
-KTRS-FM result grades are static placeholders. Real formulas, grade thresholds, paid/free membership effects, guarantee recommendation logic, and report generation are open policy questions.
+If `apps/api`, `apps/external-web`, or `e2e` exist on the current branch, they are mock-level implementation only. H2 remains temporary, mock login remains non-production, and all real OAuth, scoring, billing, certificate, report, file, electronic signature, and cross-network integrations remain out of scope until product policy is confirmed.
