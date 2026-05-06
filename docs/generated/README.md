@@ -1,6 +1,6 @@
-# Generated Docs
+# Generated Documentation
 
-Generated references belong here. Do not edit generated output as the source of truth.
+Generated references belong here. Do not manually edit generated output as the source of truth.
 
 ## Template
 

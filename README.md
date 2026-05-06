@@ -1,32 +1,30 @@
 # Technology Evaluation Integrated Platform
 
-Mock Front Office vertical slice for a Korean Technology Evaluation Integrated Platform inspired by KIBO K-TOP.
+Customer-facing Front Office first platform for technology evaluation services inspired by the KIBO K-TOP Open Technology Evaluation Platform.
 
-## Stack
+This repository uses the documentation in `docs/` as the source of truth for Front Office requirements, product guardrails, and future implementation sequencing. If application scaffolding already exists on `main`, treat it as mock-level work that must continue to follow these documents.
 
-- Backend: Spring Boot 3.5+, Java 21, Gradle, H2 in-memory DB
-- Frontend: Next.js 16+, TypeScript, Tailwind CSS, shadcn-style local UI primitives, lucide-react, Recharts
-- Tests: JUnit, Playwright
+## Current Status
 
-## Run Locally
+- PR 0-1: project guidance and Front Office requirements baseline.
+- Early mock application work may exist on `main`; do not expand it from this documentation-only PR.
+- Future PRs should stay within the ordered plan in `docs/PLANS.md`.
 
-Backend:
+## Source of Truth
 
-```bash
-cd apps/api
-./gradlew bootRun
-```
+- Agent guidance: `AGENTS.md`
+- Target architecture: `ARCHITECTURE.md`
+- Product requirements: `docs/product-specs/`
+- UX/frontend/security/reliability guidance: `docs/*.md`
+- Open questions: `docs/product-specs/open-questions.md`
 
-Frontend:
+## Guardrails
 
-```bash
-npm install
-npm run frontend:dev
-```
+Login is mock-only until OAuth 2.0 details are confirmed. Do not implement real OAuth, certificate login, simple authentication, scoring formulas, paid/free policy, billing, electronic signature, report generation, production file storage, or cross-network integration until confirmed in product specs.
 
-The frontend defaults to `http://localhost:8080` for the API. Override with `NEXT_PUBLIC_API_URL` only for non-production-safe local endpoints.
+## Local Commands
 
-## Checks
+When the mock applications are present, use the project scripts and app-local commands documented by the relevant implementation PR. For the planned Gradle/Next.js baseline, expected commands include:
 
 ```bash
 npm run backend:test
@@ -35,7 +33,3 @@ npm run frontend:typecheck
 npm run frontend:build
 npm run test:e2e
 ```
-
-## Mock Scope
-
-This implementation is mock-level only. It does not implement real KIBO OAuth, certificate login, simple authentication, scoring formulas, grade thresholds, paid/free membership policy, billing, electronic signature provider behavior, guarantee recommendation, or report generation.
