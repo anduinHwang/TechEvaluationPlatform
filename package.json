@@ -1,0 +1,21 @@
+{
+  "name": "technology-evaluation-platform",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/external-web"
+  ],
+  "scripts": {
+    "backend:dev": "cd apps/api && ./gradlew bootRun",
+    "backend:test": "cd apps/api && ./gradlew test",
+    "frontend:dev": "npm --workspace apps/external-web run dev",
+    "frontend:lint": "npm --workspace apps/external-web run lint",
+    "frontend:typecheck": "npm --workspace apps/external-web run typecheck",
+    "frontend:build": "npm --workspace apps/external-web run build",
+    "test:e2e": "playwright test",
+    "check": "npm run backend:test && npm run frontend:lint && npm run frontend:typecheck && npm run frontend:build"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  }
+}
