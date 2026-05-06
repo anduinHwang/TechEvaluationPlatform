@@ -24,7 +24,9 @@ Do not create `backoffice-web` until Back Office IA is confirmed. Institution-fa
 
 H2 is wired only as temporary local/test mock persistence. Domain entities, seed data, repository tests, mock login, dashboards, evaluation flows, consent, and My Page APIs belong to later PRs.
 
-`apps/external-web` currently contains only the anonymous home shell and shared UI primitives. The API helper uses `NEXT_PUBLIC_API_URL`, defaulting to `http://localhost:8080` for local development. It must not hardcode production URLs.
+`apps/external-web` contains the anonymous home shell, a `/verify` mock feature dashboard, and shared UI primitives. The API helper uses `NEXT_PUBLIC_API_BASE_URL` or `NEXT_PUBLIC_API_URL`, defaulting to `http://localhost:8080` for local development. It must not hardcode production URLs.
+
+The `/verify` page is a smoke-test surface for the current scaffold. It may call only existing scaffold-safe status endpoints unless a later PR adds explicit read-only mock verification APIs. It must label missing features instead of inventing business endpoints.
 
 ## Target Boundaries
 
