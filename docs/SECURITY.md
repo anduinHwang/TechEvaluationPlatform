@@ -2,7 +2,9 @@
 
 ## Authentication
 
-Authentication is not implemented in the PR 1-1 scaffold. Future login must be mock-only first. Future KIBO OAuth 2.0 integration is planned, but provider configuration is not confirmed.
+Authentication is not implemented in the current scaffold. `MockUser` records exist only as local mock data for future role-aware flows. They are not production accounts and do not store passwords, tokens, OAuth sessions, certificates, or credentials.
+
+Future login must be mock-only first. Future KIBO OAuth 2.0 integration is planned, but provider configuration is not confirmed.
 
 Do not implement real OAuth, call the OAuth reference URL from application code, or hardcode OAuth client IDs, client secrets, tokens, certificates, private keys, production callback URLs, or real credentials.
 
@@ -19,6 +21,6 @@ Do not implement real OAuth, call the OAuth reference URL from application code,
 
 ## Consent and Audit
 
-Information-use consent is not implemented in this scaffold. Real electronic signature provider behavior, consent history, audit event schema, and legal retention rules are open questions.
+Information-use consent persistence exists only as a mock record shape. `MOCK_SIGNED` is a placeholder state, not real electronic signature behavior. Real electronic signature provider behavior, consent history rules, audit event policy, and legal retention rules are open questions.
 
-Audit logging starts in later mock flow PRs when auditable actions exist.
+Audit log storage exists as a simple mock table for later flow PRs. No audit search UI, admin API, retention policy, or production compliance behavior is implemented.

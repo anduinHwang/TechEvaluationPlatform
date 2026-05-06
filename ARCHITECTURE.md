@@ -15,14 +15,23 @@ docs/              # Source-of-truth requirements and design documents
 
 Do not create `backoffice-web` until Back Office IA is confirmed. Institution-facing Front Office pages remain inside `external-web` during the early mock phase.
 
-## PR 1-1 Scaffold Boundary
+## Current Backend Boundary
 
 `apps/api` currently exposes only scaffold endpoints:
 
 - `GET /api/v1/health`
 - `GET /api/v1/mock/version`
 
-H2 is wired only as temporary local/test mock persistence. Domain entities, seed data, repository tests, mock login, dashboards, evaluation flows, consent, and My Page APIs belong to later PRs.
+H2 is wired as temporary local/test mock persistence. The backend now contains mock JPA persistence for:
+
+- `MockUser`
+- `EvaluationApplication`
+- `InformationConsent`
+- `AuditLog`
+
+These entities are a mock baseline for future FO flows, not a final production schema. `MockUser` is not real authentication, `InformationConsent` is not a real electronic signature/legal retention implementation, and `EvaluationApplication.resultGrade` is placeholder-only with no scoring or grade calculation.
+
+Mock login, dashboards, evaluation flow APIs, consent submission APIs, and My Page APIs belong to later PRs.
 
 `apps/external-web` currently contains only the anonymous home shell and shared UI primitives. The API helper uses `NEXT_PUBLIC_API_URL`, defaulting to `http://localhost:8080` for local development. It must not hardcode production URLs.
 
