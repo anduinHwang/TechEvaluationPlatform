@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+set -eu
+
+# Lightweight project-local Gradle launcher.
+# This repository does not assume a globally installed Gradle binary.
+GRADLE_VERSION="${GRADLE_VERSION:-9.4.1}"
+BASE_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+GRADLE_DIR="$BASE_DIR/.gradle-local/gradle-$GRADLE_VERSION"
+
+if [ ! -x "$GRADLE_DIR/bin/gradle" ]; then
+  mkdir -p "$BASE_DIR/.gradle-local"
+  ARCHIVE="$BASE_DIR/.gradle-local/gradle-$GRADLE_VERSION-bin.zip"
+  URL="https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip"
+  echo "Downloading Gradle $GRADLE_VERSION..."
+  curl -fsSL "$URL" -o "$ARCHIVE"
+  unzip -q "$ARCHIVE" -d "$BASE_DIR/.gradle-local"
+fi
+
+exec "$GRADLE_DIR/bin/gradle" "$@"
