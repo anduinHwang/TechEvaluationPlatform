@@ -8,6 +8,7 @@ This repository uses the documentation in `docs/` as the source of truth for Fro
 
 - PR 0-1: project guidance and Front Office requirements baseline.
 - PR 1-1: minimal runnable mock app scaffold.
+- PR 1-2: H2-backed mock domain persistence baseline.
 - Future PRs must stay within the ordered plan in `docs/PLANS.md`.
 
 ## Source of Truth
@@ -23,11 +24,16 @@ This repository uses the documentation in `docs/` as the source of truth for Fro
 The current scaffold includes only:
 
 - Spring Boot API shell with health and mock version endpoints
+- H2-backed mock JPA entities and repositories for users, evaluation applications, information consent, and audit logs
+- Local seed data for company/institution mock users and sample KTRS-FM applications
 - Next.js Front Office anonymous home shell
 - JUnit smoke tests for backend scaffold endpoints
+- JUnit repository tests for the mock domain baseline
 - Playwright smoke tests for the home page
 
-Login, dashboards, KTRS-FM flows, My Page, domain entities, seed data, report generation, and real integrations are intentionally not implemented yet.
+Login, dashboards, KTRS-FM APIs, My Page, report generation, and real integrations are intentionally not implemented yet.
+
+The current JPA entities are mock-level persistence only. They are not a final production schema, `MockUser` is not real authentication, and `resultGrade` is placeholder-only with no scoring or grade calculation.
 
 ## Stack
 
@@ -71,4 +77,4 @@ H2 is temporary mock persistence and must not be used as production storage. Pro
 
 ## Next Recommended PR
 
-PR 1-2: H2 mock domain baseline.
+PR 2-1: Mock login flow.

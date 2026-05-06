@@ -11,5 +11,5 @@ spring:
       path: /h2-console
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     open-in-view: false
